@@ -27,11 +27,6 @@ class EditUserFormContainer extends Component {
                   <Field name='lastName' label='Last name' component={TextInput} />
                 </div>
               </div>
-              <Field
-                name='selfReport'
-                label='Food allergies and other information'
-                component={TextArea}
-              />
               <Field name='password' label='Current password' component={Password} />
             </div>
             <div className='form-actions'>
