@@ -1,0 +1,19 @@
+{
+  "name": "react_webpacker_boilerplate",
+  "private": true,
+  "scripts": {
+    "start": "./bin/webpack-dev-server"
+  },
+  "dependencies": {
+    "@rails/webpacker": "^3.0.2",
+    "babel-preset-react": "^6.24.1",
+    "coffeescript": "1.12.7",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.3"
+  }
+}
