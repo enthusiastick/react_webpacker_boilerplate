@@ -2,12 +2,42 @@ import 'whatwg-fetch'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+
+import createBrowserHistory from 'history/createBrowserHistory'
+import { Route } from 'react-router'
+
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
+import thunkMiddleware from 'redux-thunk'
+
+import HomePage from '../react/connectors/HomePage'
+
+const history = createBrowserHistory()
+
+const middlewares = [thunkMiddleware, routerMiddleware(history)]
+
+const store = createStore(
+  combineReducers({
+    form: formReducer,
+    router: routerReducer
+  }),
+  applyMiddleware(...middlewares)
+)
+
 document.addEventListener('DOMContentLoaded', () => {
   let reactElement = document.getElementById('react')
 
   if (reactElement) {
     ReactDOM.render(
-      <h1>Boo yaa</h1>,
+      <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <div>
+              <Route exact path='/' component={HomePage} />
+            </div>
+          </ConnectedRouter>
+        </Provider>,
       reactElement
     )
   }
